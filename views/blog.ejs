@@ -1,0 +1,590 @@
+<% data.forEach((item)=>{ %>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #55E6C1;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .main {
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 60px;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 25px;
+            border-radius: 5px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .hidebtn {
+            display: none;
+        }
+
+        .language {
+            width: 85%;
+            margin-top: .5rem;
+            margin-bottom: .8rem;
+            position: relative;
+        }
+
+        .selectlang {
+            position: absolute;
+            right: 0rem;
+            width: 5rem;
+            height: 1.5rem;
+        }
+
+        .language label {
+            float: inline-end;
+            margin-right: 5.2rem;
+            margin-top: .2rem;
+            font-weight: 600;
+        }
+
+        .popup {
+            width: 85%;
+            margin-bottom: 1rem;
+            background-color: #FBE4C4;
+            display: none;
+            border-radius: 10px;
+            transition: transform 0.4s, 0.4s;
+            padding: 20px;
+        }
+
+        .open-popup {
+            display: block;
+        }
+
+        .hindi {
+            display: block;
+        }
+
+        .english {
+            display: none;
+        }
+
+        .head {
+            width: 85%;
+            text-align: justify;
+        }
+
+        .head h1 {
+            color: #E74C3C;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        .head img {
+            width: 100%;
+            margin: 0px;
+            border-radius: 5px;
+        }
+
+        .head p {
+            margin: 1rem 0;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .head strong {
+            font-size: 1.2rem;
+        }
+
+        .head h2 {
+            margin-top: 5rem;
+            color: #E74C3C;
+            text-align: center;
+        }
+
+        .head ul {
+            margin-top: 1rem;
+            margin-left: 2rem;
+        }
+
+        .head ul li {
+            font-size: 1.2rem;
+        }
+
+        .btndiv {
+            display: flex;
+        }
+
+        .popup button {
+            padding: 10px 50px;
+            margin-left: 40%;
+            background: #AA0909;
+            outline: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 0;
+            color: #fff;
+            box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .row {
+            width: 100%;
+            margin: 1.5rem;
+        }
+    </style>
+
+
+
+
+    <div class="main">
+        <div class="language">
+            <label>Select Language: </label>
+            <select class="selectlang" name="Select Language" id="" onchange="getLanguage()">
+                <option value="hindi">Hindi</option>
+                <option value="english">English</option>
+            </select>
+        </div>
+        <div class="head">
+            <div class="hindi" id="hindi">
+                <h1>इतिहास में आज का दिन <%= item.datehin %></h1>
+                <img src=" <%= item.image_urlhin %>" alt="image">
+                <h2>" आज का दिन क्यों है खास, आओ जाने आज का इतिहास "</h2>
+                <p><strong>इतिहास में आज का दिन <%= item.datehin %> :</strong>
+                    <%= item.heading_firsthin %>
+                </p>
+                <p><strong>
+                        <%= item.datehin %>:
+                    </strong>
+                    <%= item.heading_secondhin %>
+                </p>
+                <p><strong>
+                        <%= item.datehin %>:
+                    </strong>
+                    <%= item.heading_thirdhin %>
+                </p>
+                <strong>
+                    <%= item.datehin %> की महत्त्वपूर्ण घटनाएँ
+                </strong>
+                <hr>
+                <ul>
+                    <% item.importent_eventshin.forEach((item)=>{ %>
+                        <li>
+                            <%= item %>
+                        </li>
+                        <%})%>
+                </ul>
+
+                <p><strong>सामान्य ज्ञान क्विज:-</strong>
+                    <span>बैंक, एसएससी, रेलवे, सिविल सर्विस आदि सभी प्रतियोगी परीक्षाओं में सामान्य ज्ञान (GK) के
+                        प्रश्न
+                        जरूर पूछे जाते हैं l इसलिए सरकारी नौकरियों में सफलता सुनिश्चित करने के लिए इसकी तैयारी
+                        आवश्यक है
+                        l हम आज की घटनाओं पर आधारित जीके के 10 ऐसे वस्तुनिष्ट प्रश्न लाए हैं और आप इन सभी की पीडीएफ
+                        फाइल
+                        का लिंक क्विज के बाद आने बाले रिजल्ट से डाउनलोड कर सकते हैं l हमें उम्मीद है की यदि आप
+                        प्रतिदिन
+                        की पीडीएफ फाइल का कलेक्शन करतें है तो यह प्रतियोगी परीक्षाओं में आपकी मदद कर सकते हैं l आप
+                        अपने
+                        सुझाव देने के लिए हमें कमेंट बॉक्स में जरूर कमेंट करें l </span>
+                </p>
+            </div>
+            <div class="english" id="english">
+                <img src="<%= item.image_urleng %>" alt="image">
+                <h2>" Why is today special, let's know the history of today "</h2>
+                <p><strong>Today in History <%= item.dateeng %>:</strong>
+                    <%= item.heading_firsteng %>
+                </p>
+                <p><strong>
+                        <%= item.dateeng %>:
+                    </strong>
+                    <%= item.heading_secondeng %>
+                </p>
+                <p><strong>
+                        <%= item.dateeng %>:
+                    </strong>
+                    <%= item.heading_thirdeng %>
+                </p>
+                <strong>Important events of <%= item.dateeng %></strong>
+                <hr>
+                <ul>
+                    <% item.importent_eventseng.forEach((item)=>{ %>
+                        <li>
+                            <%= item %>
+                        </li>
+                        <%})%>
+                </ul>
+
+                <p><strong>General Knowledge Quiz:-</strong>
+                    <span>General Knowledge (GK) questions in all competitive exams like Bank, SSC, Railway, Civil
+                        Service etc.
+                        It is definitely asked. Therefore, its preparation is necessary to ensure success in
+                        government jobs.
+                        l We have brought 10 such objective questions of GK based on today's events and you can
+                        download PDF file of all these.
+                        You can download the link from the results that will come after the quiz. We hope that if
+                        you are interested every day
+                        If you collect PDF files then it can help you in competitive exams.
+                        To give suggestions, please comment us in the comment box.</span>
+                </p>
+            </div>
+        </div>
+        <button class="btn" id="startquiz" onclick="openPopup()">Start Quiz</button>
+        <div class="result" id="result">
+
+        </div>
+
+
+        <div class="popup" id="popup">
+            <h2 id="queBox">Q-1) This is a dammy Question</h2>
+            <h2 id="hindiQueBox">This is a dammy Question</h2>
+            <div class="row">
+                <input class="options" id="option1" type="radio" value="a" name="option">
+                <label for="option1">a) Option 1</label>
+                <p class="label">a) Option 1</p>
+            </div>
+            <div class="row">
+                <input class="options" id="option2" type="radio" value="b" name="option">
+                <label for="option2">b) Option 2</label>
+                <p class="label">a) Option 1</p>
+            </div>
+            <div class="row">
+                <input class="options" id="option3" type="radio" value="c" name="option">
+                <label for="option3">c) Option 3</label>
+                <p class="label">a) Option 1</p>
+            </div>
+            <div class="row">
+                <input class="options" id="option4" type="radio" value="d" name="option">
+                <label for="option4">d) Option 4</label>
+                <p class="label">a) Option 1</p>
+            </div>
+            <div style="width: 100%; display: flex;">
+                <!-- <button type="button" onclick="previousQue()">Previous</button> -->
+                <button type="button" onclick="submitQuiz()">Submit</button>
+                <!-- <button type="button" onclick="nextQue()">Next</button> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scritp for Change Language -->
+    <script type="text/javascript">
+        //<![CDATA[            
+
+        function getLanguage() {
+            const language = document.querySelector('.selectlang').value;
+            const hindi = document.getElementById('hindi');
+            const english = document.getElementById('english');
+            if (language === 'hindi') {
+                english.style.display = 'none';
+                hindi.style.display = 'block';
+            } else if (language === 'english') {
+                english.style.display = 'block';
+                hindi.style.display = 'none';
+            }
+        }
+
+        //]]>
+    </script>
+
+    <!-- Script for Quiz Popup -->
+    <script type="text/javascript">
+        //<![CDATA[
+        let popup = document.getElementById("popup");
+        let startQuiz = document.getElementById("startquiz")
+
+        function openPopup() {
+            popup.classList.add("open-popup");
+            startQuiz.classList.add("hidebtn");
+        }
+
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+
+
+        const questions =
+            [
+                {
+                    'que': '<%= item.questionseng.eng_que[0] %>',
+                    'a': '<%= item.questionseng.eng_a[0] %>',
+                    'b': '<%= item.questionseng.eng_b[0] %>',
+                    'c': '<%= item.questionseng.eng_c[0] %>',
+                    'd': '<%= item.questionseng.eng_d[0] %>',
+                    'correct': '<%= item.questionseng.eng_answer[0] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[1] %>',
+                    'a': '<%= item.questionseng.eng_a[1] %>',
+                    'b': '<%= item.questionseng.eng_b[1] %>',
+                    'c': '<%= item.questionseng.eng_c[1] %>',
+                    'd': '<%= item.questionseng.eng_d[1] %>',
+                    'correct': '<%= item.questionseng.eng_answer[1] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[2] %>',
+                    'a': '<%= item.questionseng.eng_a[2] %>',
+                    'b': '<%= item.questionseng.eng_b[2] %>',
+                    'c': '<%= item.questionseng.eng_c[2] %>',
+                    'd': '<%= item.questionseng.eng_d[2] %>',
+                    'correct': '<%= item.questionseng.eng_answer[2] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[3] %>',
+                    'a': '<%= item.questionseng.eng_a[3] %>',
+                    'b': '<%= item.questionseng.eng_b[3] %>',
+                    'c': '<%= item.questionseng.eng_c[3] %>',
+                    'd': '<%= item.questionseng.eng_d[3] %>',
+                    'correct': '<%= item.questionseng.eng_answer[3] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[4] %>',
+                    'a': '<%= item.questionseng.eng_a[4] %>',
+                    'b': '<%= item.questionseng.eng_b[4] %>',
+                    'c': '<%= item.questionseng.eng_c[4] %>',
+                    'd': '<%= item.questionseng.eng_d[4] %>',
+                    'correct': '<%= item.questionseng.eng_answer[4] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[5] %>',
+                    'a': '<%= item.questionseng.eng_a[5] %>',
+                    'b': '<%= item.questionseng.eng_b[5] %>',
+                    'c': '<%= item.questionseng.eng_c[5] %>',
+                    'd': '<%= item.questionseng.eng_d[5] %>',
+                    'correct': '<%= item.questionseng.eng_answer[5] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[6] %>',
+                    'a': '<%= item.questionseng.eng_a[6] %>',
+                    'b': '<%= item.questionseng.eng_b[6] %>',
+                    'c': '<%= item.questionseng.eng_c[6] %>',
+                    'd': '<%= item.questionseng.eng_d[6] %>',
+                    'correct': '<%= item.questionseng.eng_answer[6] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[7] %>',
+                    'a': '<%= item.questionseng.eng_a[7] %>',
+                    'b': '<%= item.questionseng.eng_b[7] %>',
+                    'c': '<%= item.questionseng.eng_c[7] %>',
+                    'd': '<%= item.questionseng.eng_d[7] %>',
+                    'correct': '<%= item.questionseng.eng_answer[7] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[8] %>',
+                    'a': '<%= item.questionseng.eng_a[8] %>',
+                    'b': '<%= item.questionseng.eng_b[8] %>',
+                    'c': '<%= item.questionseng.eng_c[8] %>',
+                    'd': '<%= item.questionseng.eng_d[8] %>',
+                    'correct': '<%= item.questionseng.eng_answer[8] %>'
+                },
+                {
+                    'que': '<%= item.questionseng.eng_que[9] %>',
+                    'a': '<%= item.questionseng.eng_a[9] %>',
+                    'b': '<%= item.questionseng.eng_b[9] %>',
+                    'c': '<%= item.questionseng.eng_c[9] %>',
+                    'd': '<%= item.questionseng.eng_d[9] %>',
+                    'correct': '<%= item.questionseng.eng_answer[9] %>'
+                }
+            ];
+
+        const hindiquestions =
+            [
+                {
+                    'que': '<%= item.questionshin.que[0] %>',
+                    'a': '<%= item.questionshin.a[0] %>',
+                    'b': '<%= item.questionshin.b[0] %>',
+                    'c': '<%= item.questionshin.c[0] %>',
+                    'd': '<%= item.questionshin.d[0] %>',
+                    'correct': '<%= item.questionshin.answer[0] %>'
+                },
+                {
+                    'que': '<%= item.questionshin.que[1] %>',
+                    'a': '<%= item.questionshin.a[1] %>',
+                    'b': '<%= item.questionshin.b[1] %>',
+                    'c': '<%= item.questionshin.c[1] %>',
+                    'd': '<%= item.questionshin.d[1] %>',
+                    'correct': '<%= item.questionshin.answer[1] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[2] %>',
+                    'a': '<%= item.questionshin.a[2] %>',
+                    'b': '<%= item.questionshin.b[2] %>',
+                    'c': '<%= item.questionshin.c[2] %>',
+                    'd': '<%= item.questionshin.d[2] %>',
+                    'correct': '<%= item.questionshin.answer[2] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[3] %>',
+                    'a': '<%= item.questionshin.a[3] %>',
+                    'b': '<%= item.questionshin.b[3] %>',
+                    'c': '<%= item.questionshin.c[3] %>',
+                    'd': '<%= item.questionshin.d[3] %>',
+                    'correct': '<%= item.questionshin.answer[3] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[4] %>',
+                    'a': '<%= item.questionshin.a[4] %>',
+                    'b': '<%= item.questionshin.b[4] %>',
+                    'c': '<%= item.questionshin.c[4] %>',
+                    'd': '<%= item.questionshin.d[4] %>',
+                    'correct': '<%= item.questionshin.answer[4] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[5] %>',
+                    'a': '<%= item.questionshin.a[5] %>',
+                    'b': '<%= item.questionshin.b[5] %>',
+                    'c': '<%= item.questionshin.c[5] %>',
+                    'd': '<%= item.questionshin.d[5] %>',
+                    'correct': '<%= item.questionshin.answer[5] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[6] %>',
+                    'a': '<%= item.questionshin.a[6] %>',
+                    'b': '<%= item.questionshin.b[6] %>',
+                    'c': '<%= item.questionshin.c[6] %>',
+                    'd': '<%= item.questionshin.d[6] %>',
+                    'correct': '<%= item.questionshin.answer[6] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[7] %>',
+                    'a': '<%= item.questionshin.a[7] %>',
+                    'b': '<%= item.questionshin.b[7] %>',
+                    'c': '<%= item.questionshin.c[7] %>',
+                    'd': '<%= item.questionshin.d[7] %>',
+                    'correct': '<%= item.questionshin.answer[7] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[8] %>',
+                    'a': '<%= item.questionshin.a[8] %>',
+                    'b': '<%= item.questionshin.b[8] %>',
+                    'c': '<%= item.questionshin.c[8] %>',
+                    'd': '<%= item.questionshin.d[8] %>',
+                    'correct': '<%= item.questionshin.answer[8] %>'
+                }, {
+                    'que': '<%= item.questionshin.que[9] %>',
+                    'a': '<%= item.questionshin.a[9] %>',
+                    'b': '<%= item.questionshin.b[9] %>',
+                    'c': '<%= item.questionshin.c[9] %>',
+                    'd': '<%= item.questionshin.d[9] %>',
+                    'correct': '<%= item.questionshin.answer[9] %>'
+                },
+            ]
+
+        let index = 0;
+        let total = questions.length;
+        let right = 0;
+        wrong = 0;
+        attempet = 0;
+        const queBox = document.getElementById("queBox");
+        const hindiQueBox = document.getElementById('hindiQueBox');
+        const optionInputs = document.querySelectorAll('.options');
+        const hindiOptions = document.querySelectorAll('.label');
+        const loadQuestion = () => {
+            if (index === total) {
+                return endQuiz();
+            } else {
+                reset();
+            }
+            const data = questions[index];
+            const hindiData = hindiquestions[index];
+            queBox.innerHTML = `${index + 1}) ${data.que}`;
+            hindiQueBox.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${hindiData.que}`
+            optionInputs[0].nextElementSibling.innerText = data.a;
+            optionInputs[1].nextElementSibling.innerText = data.b;
+            optionInputs[2].nextElementSibling.innerText = data.c;
+            optionInputs[3].nextElementSibling.innerText = data.d;
+            hindiOptions[0].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${hindiData.a}`;
+            hindiOptions[1].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${hindiData.b}`;
+            hindiOptions[2].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${hindiData.c}`;
+            hindiOptions[3].innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;${hindiData.d}`;
+        }
+
+        const submitQuiz = () => {
+            let a = 0;
+            const data = questions[index];
+            const ans = getAnswer();
+            if (ans === data.correct) {
+                right++;
+            } else if (ans === undefined) {
+                a++;
+            } else {
+                wrong++;
+                wrong = wrong - a;
+            }
+            index++;
+            attempet = (right + wrong);
+            loadQuestion();
+            return;
+        }
+
+        const nextQue = () => {
+            let interval = null;
+            if (index === total - 1) {
+                clearInterval(interval)
+            } else {
+                submitQuiz();
+            }
+        };
+
+        const previousQue = () => {
+            let interval = null;
+            if (index === 0) {
+                clearInterval(interval);
+            } else {
+                index = index - 1;
+                submitQuiz();
+            }
+        };
+
+        const getAnswer = () => {
+            let answer;
+            optionInputs.forEach(
+                (input) => {
+                    if (input.checked) {
+                        answer = input.value;
+                    }
+                }
+            )
+            return answer;
+        };
+
+        const reset = () => {
+            optionInputs.forEach(
+                (input) => {
+                    input.checked = false;
+                }
+            )
+        }
+
+        const endQuiz = () => {
+            document.getElementById("result").innerHTML = `
+            <div style="text-align: center; margin: 1rem auto;" >
+            <div><h1>Thanku For Playing Quiz</h1></div>
+            <div style="display: flex;">
+            <h3 style="margin: 1rem; color: #196F3D;"> Right Answer = ${right} </h3>
+            <h3 style="margin: 1rem; color: #CC0000;"> Wrong Answer = ${wrong} </h3>
+            <h3 style="margin: 1rem; color: #0000CC;"> Total Attempt = ${attempet} </h3>
+            <h3 style="margin: 1rem; color: #330033;"> Total Score = ${right}/${total} </h3>
+            </div style="">
+            <a style="margin-right:3rem; font-size: 1.5rem;" href="<%= item.hindipdf_url %>">Download Hindi PDF</a>
+            <a style="font-size: 1.5rem;" href="<%= item.englishpdf_url %>">Download English PDF</a>
+            </div>
+            `
+            closePopup();
+            document.getElementById("startquiz").classList.add("hidebtn");
+
+        }
+        loadQuestion(); style = "margin-right:1rem"
+        //]]>
+    </script>
+
+    <hr>
+    <hr>
+    <% }) %>

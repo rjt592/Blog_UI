@@ -1,0 +1,512 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 16px;
+    }
+
+    .main {
+        /* position: relative; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .post_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 80%;
+    }
+
+    .textarea {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+    }
+
+    .form_upper input {
+        height: 2rem;
+        width: 100%;
+    }
+
+    .form_upper textarea {
+        height: 10rem;
+        width: 100%;
+    }
+
+    .importent_events {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        padding-top: 1.3rem;
+        margin-top: .5rem;
+    }
+
+    .importent_events input {
+        height: 2rem;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .add_event {
+        margin-top: .4rem;
+        margin-bottom: .4rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+    }
+
+    .add_event input {
+        width: 100%;
+        height: 2rem;
+    }
+
+    .add_event button {
+        margin-left: .2rem;
+        background-color: red;
+        color: #fff;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .delete_btn {
+        margin-top: 0.5rem;
+        background-color: red;
+        color: #fff;
+        width: 7rem;
+        height: 2rem;
+    }
+
+    .question {
+        position: relative;
+        margin-top: 2rem;
+        padding: 1rem;
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        border-radius: .5rem;
+        box-shadow: 0rem 1rem 2rem 0rem rgba(0, 0, 0, 0.2), 0rem .5rem 1rem 0rem rgba(0, 0, 0, 0.2);
+    }
+
+    .more_questions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+        width: 100%;
+    }
+
+    .question_item {
+        width: 100%;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .question_item input {
+        margin-left: 1rem;
+    }
+
+    .question input {
+        width: 100%;
+        height: 2rem;
+    }
+
+    .submit_btn {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .submit_btn button {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        background-color: ghostwhite;
+        color: black;
+        border-radius: .5rem;
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .buttons button {
+        width: 7rem;
+        height: 2rem;
+    }
+
+    .add_hindieventbtn {
+        position: absolute;
+        top: 0rem;
+    }
+
+    .add_hindiquestionbtn {
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+    }
+
+    .add_englisheventbtn {
+        position: absolute;
+        top: 0rem;
+    }
+
+    .add_englishquestionbtn {
+        position: absolute;
+        top: .5rem;
+        right: 1rem;
+    }
+
+
+    .hindi h2 {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .english h2 {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    .pdf_url{
+        margin-top: 2rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .pdf_url input{
+        height: 2rem;
+    }
+</style>
+<div class="main">
+    <form class="post_form" id="formPost" action="/blog_route/post" method="post">
+        <div class="hindi">
+            <h2>Hindi</h2>
+            <div class="form_upper">
+                <label for="">Enter Date</label>
+                <input type="text" name="datehin">
+                <label for="">Enter the Image URL </label>
+                <input class="" type="text" name="image_urlhin">
+                <label for="">Enter the First Heading </label>
+                <textarea name="heading_firsthin" id="" cols="30" rows="10"></textarea>
+                <label for="">Enter the Second Heading </label>
+                <textarea name="heading_secondhin" id="" cols="30" rows="10"></textarea>
+                <label for="">Enter the Third Heading </label>
+                <textarea name="heading_thirdhin" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="importent_events hindievents">
+                <label for="">Enter the Importent Event </label>
+                <input type="text" name="importent_eventshin">
+                <div class="add_hindieventbtn buttons">
+                    <button type="button" id="" onclick="addhindiEvent()">+ Add More</button>
+                </div>
+            </div>
+            <div class="question hindiquestions">
+                <div class="add_hindiquestionbtn buttons">
+                    <button type="button" onclick="addhindiquestion()">+ Add Question</button>
+                </div>
+                <div class="more_questions hindiquestions">
+                    <div class="question_item">
+                        Q)<input type="text" name="que">
+                    </div>
+                    <div class="question_item">
+                        A)<input type="text" name="a">
+                    </div>
+                    <div class="question_item">
+                        B)<input type="text" name="b">
+                    </div>
+                    <div class="question_item">
+                        C)<input type="text" name="c">
+                    </div>
+                    <div class="question_item">
+                        D)<input type="text" name="d">
+                    </div>
+                    <div class="question_item">
+                        Ans.)<input type="text" name="answer">
+                    </div>
+                </div>
+            </div>
+            <div class="pdf_url">
+                <label for="">Enter the Hindi PDF Url</label>
+                <input type="text" name="hindipdf_url">
+            </div>
+        </div>
+        <div class="english">
+            <h2>English</h2>
+            <div class="form_upper">
+                <label for="">Enter Date</label>
+                <input type="text" name="dateeng">
+                <label for="">Enter the Image URL </label>
+                <input class="" type="text" name="image_urleng">
+                <label for="">Enter the First Heading </label>
+                <textarea name="heading_firsteng" id="" cols="30" rows="10"></textarea>
+                <label for="">Enter the Second Heading </label>
+                <textarea name="heading_secondeng" id="" cols="30" rows="10"></textarea>
+                <label for="">Enter the Third Heading </label>
+                <textarea name="heading_thirdeng" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="importent_events englishevents">
+                <label for="">Enter the Importent Event </label>
+                <input type="text" name="importent_eventseng">
+                <div class="add_englisheventbtn buttons">
+                    <button type="button" onclick="addenglishEvent()">+ Add More</button>
+                </div>
+            </div>
+            <div class="question">
+                <div class="add_englishquestionbtn buttons">
+                    <button type="button" onclick="addenglishquestion()">+ Add Question</button>
+                </div>
+                <!-- <form action="/blog_route/post" method="post"> -->
+                    <div class="more_questions englishquestions">
+                        <div class="question_item">
+                            Q)<input type="text" name="eng_que">
+                        </div>
+                        <div class="question_item">
+                            A)<input type="text" name="eng_a">
+                        </div>
+                        <div class="question_item">
+                            B)<input type="text" name="eng_b">
+                        </div>
+                        <div class="question_item">
+                            C)<input type="text" name="eng_c">
+                        </div>
+                        <div class="question_item">
+                            D)<input type="text" name="eng_d">
+                        </div>
+                        <div class="question_item">
+                            Ans.)<input type="text" name="eng_answer">
+                        </div>
+                    </div>
+            </div>
+            <div class="pdf_url">
+                <label for="">Enter the English PDF Url</label>
+                <input type="text" name="englishpdf_url">
+            </div>
+        </div>
+        <div class="submit_btn">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[ 
+    const hindievents = document.querySelector('.hindievents');
+    function addhindiEvent() {
+        const input = document.createElement('input');
+        input.type = "text";
+        input.name = "importent_eventshin"
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerHTML = '&times'
+
+        deleteBtn.addEventListener('click', removeInput);
+
+        const addEvent = document.createElement('div');
+        addEvent.className = 'add_event'
+
+        hindievents.appendChild(addEvent);
+        addEvent.appendChild(input);
+        addEvent.appendChild(deleteBtn);
+
+    }
+
+    const hindiquestions = document.querySelector('.hindiquestions');
+    function addhindiquestion() {
+        const addQuestion = document.createElement('div')
+        addQuestion.className = 'more_questions', 'hindiquestions';
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete_btn';
+        deleteBtn.innerHTML = '&times';
+
+        deleteBtn.addEventListener('click', removeInput);
+
+        const div = document.createElement('div');
+        div.className = 'question_item';
+        div.innerHTML = 'Q)';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'que'
+
+        const div1 = document.createElement('div');
+        div1.className = 'question_item';
+        div1.innerHTML = 'A)';
+
+        const input1 = document.createElement('input');
+        input1.type = 'text';
+        input1.name = 'a'
+
+        const div2 = document.createElement('div');
+        div2.className = 'question_item';
+        div2.innerHTML = 'B)';
+
+        const input2 = document.createElement('input');
+        input2.type = 'text';
+        input2.name = 'b'
+
+        const div3 = document.createElement('div');
+        div3.className = 'question_item';
+        div3.innerHTML = 'C)';
+
+        const input3 = document.createElement('input');
+        input3.type = 'text';
+        input3.name = 'c'
+
+        const div4 = document.createElement('div');
+        div4.className = 'question_item';
+        div4.innerHTML = 'D)';
+
+        const input4 = document.createElement('input');
+        input4.type = 'text';
+        input4.name = 'd'
+
+        const div5 = document.createElement('div');
+        div5.className = 'question_item';
+        div5.innerHTML = 'Ans.)';
+
+        const input5 = document.createElement('input');
+        input5.type = 'text';
+        input5.name = 'answer'
+
+        hindiquestions.appendChild(addQuestion);
+        addQuestion.appendChild(deleteBtn);
+        addQuestion.appendChild(div);
+        div.appendChild(input);
+        addQuestion.appendChild(div1);
+        div1.appendChild(input1);
+        addQuestion.appendChild(div2);
+        div2.appendChild(input2);
+        addQuestion.appendChild(div3);
+        div3.appendChild(input3);
+        addQuestion.appendChild(div4);
+        div4.appendChild(input4);
+        addQuestion.appendChild(div5);
+        div5.appendChild(input5);
+    }
+
+    const englishevents = document.querySelector('.englishevents')
+    function addenglishEvent() {
+        const input = document.createElement('input');
+        input.type = "text";
+        input.name = "importent_eventseng"
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerHTML = '&times';
+
+        deleteBtn.addEventListener('click', removeInput);
+
+        const addEvent = document.createElement('div');
+        addEvent.className = 'add_event'
+
+        englishevents.appendChild(addEvent);
+        addEvent.appendChild(input);
+        addEvent.appendChild(deleteBtn);
+    }
+
+    const englishquestions = document.querySelector('.englishquestions')
+    function addenglishquestion() {
+        const addQuestion = document.createElement('div')
+        addQuestion.className = 'more_questions', 'englishquestions';
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete_btn';
+        deleteBtn.innerHTML = '&times';
+
+        deleteBtn.addEventListener('click', removeInput);
+
+        const div = document.createElement('div');
+        div.className = 'question_item';
+        div.innerHTML = 'Q)';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'eng_que'
+
+        const div1 = document.createElement('div');
+        div1.className = 'question_item';
+        div1.innerHTML = 'A)';
+
+        const input1 = document.createElement('input');
+        input1.type = 'text';
+        input1.name = 'eng_a'
+
+        const div2 = document.createElement('div');
+        div2.className = 'question_item';
+        div2.innerHTML = 'B)';
+
+        const input2 = document.createElement('input');
+        input2.type = 'text';
+        input2.name = 'eng_b'
+
+        const div3 = document.createElement('div');
+        div3.className = 'question_item';
+        div3.innerHTML = 'C)';
+
+        const input3 = document.createElement('input');
+        input3.type = 'text';
+        input3.name = 'eng_c'
+
+        const div4 = document.createElement('div');
+        div4.className = 'question_item';
+        div4.innerHTML = 'D)';
+
+        const input4 = document.createElement('input');
+        input4.type = 'text';
+        input4.name = 'eng_d'
+
+        const div5 = document.createElement('div');
+        div5.className = 'question_item';
+        div5.innerHTML = 'Ans.)';
+
+        const input5 = document.createElement('input');
+        input5.type = 'text';
+        input5.name = 'eng_answer'
+
+        englishquestions.appendChild(addQuestion);
+        addQuestion.appendChild(deleteBtn);
+        addQuestion.appendChild(div);
+        div.appendChild(input);
+        addQuestion.appendChild(div1);
+        div1.appendChild(input1);
+        addQuestion.appendChild(div2);
+        div2.appendChild(input2);
+        addQuestion.appendChild(div3);
+        div3.appendChild(input3);
+        addQuestion.appendChild(div4);
+        div4.appendChild(input4);
+        addQuestion.appendChild(div5);
+        div5.appendChild(input5);
+    }
+
+    function removeInput() {
+        this.parentElement.remove();
+    }
+    //]]>
+</script>
