@@ -3,7 +3,7 @@ const router = require("express").Router();
 
 //Import modle route
 const BLOG_SCHEMA = require("../models/blog");
-let data = [];
+
 
 router.post("/post", async (req, res) => {
   const blog_data = BLOG_SCHEMA({
